@@ -26,7 +26,13 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        if(b == 0){
+        	throw new IllegalArgumentException();
+        }else if(a % b == 0){
+        	return true;
+        }else{
+        	return false;
+        }
     }
 
     /**
@@ -41,7 +47,20 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new NotImplementedException();
+    	
+        if( n % 3 == 0 && n % 5 == 0){
+        	String divBoth = "15: FizzBuzz";
+        	return divBoth;
+        }else if( n % 5 == 0){
+        	String divFive = "5: Buzz";
+        	return divFive;
+        }else if( n % 3 == 0){
+        	String divThree = "3: Fizz";
+        	return divThree;
+        }else{
+        	return null;
+        }
+    	
     }
 
     /**
@@ -55,15 +74,31 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
-    }
+    	String[] messages = new String[10];
+    	int nullCount = 0;
+    	
+    	if(end < start){
+    		throw new IllegalArgumentException();
+    	}else{
+    		for(int i = start; i < end; i++){
+    			if(message(i) == null){
+       				nullCount++;
+       				}
+    	}
+   			
+   			}
+		return messages;
+   		}
 
     /**
      * For this main method, iterate over the numbers 1 through 115 and print
      * the relevant messages to sysout
      */
     public static void main(String[] args) {
-        throw new NotImplementedException();
+        for(int i = 0; i<115; i++){
+        	System.out.println(message(i));
+        }
+    	throw new NotImplementedException();
     }
 
 }

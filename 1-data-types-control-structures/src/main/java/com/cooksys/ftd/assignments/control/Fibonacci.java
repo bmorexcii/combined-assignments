@@ -24,7 +24,8 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	
     }
 
     /**
@@ -49,6 +50,25 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    	int x = 1;
+        int y = 1;
+        int z;
+        
+        int[] newArray = new int[count];
+        
+        if( count < 0){
+        	throw new IllegalArgumentException();
+        }else{
+        	for(int i = 0; i < count; i++){
+        				
+        		z = y;
+        		y = x + y;
+        		x = z;
+        		
+        		newArray[i] = 0;
+        		
+        	}
+        	return newArray;
+        }
     }
 }
