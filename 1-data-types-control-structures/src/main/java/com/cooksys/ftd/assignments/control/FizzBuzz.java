@@ -74,7 +74,7 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-    	String[] messages = new String[10];
+    	String[] messages = new String[end - start];
     	int nullCount = 0;
     	
     	if(end < start){

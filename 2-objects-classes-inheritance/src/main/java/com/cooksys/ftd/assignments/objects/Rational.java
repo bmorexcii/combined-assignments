@@ -3,7 +3,10 @@ package com.cooksys.ftd.assignments.objects;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Rational implements IRational {
-    /**
+    private int numerator;
+	private int denominator;
+
+	/**
      * Constructor for rational values of the type:
      * <p>
      * `numerator / denominator`
@@ -14,8 +17,16 @@ public class Rational implements IRational {
      * @param denominator the denominator of the rational value
      * @throws IllegalArgumentException if the given denominator is 0
      */
+	
+	
+	
+	
     public Rational(int numerator, int denominator) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        if(denominator == 0){
+        	throw new IllegalArgumentException();
+        }
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     /**
@@ -23,7 +34,7 @@ public class Rational implements IRational {
      */
     @Override
     public int getNumerator() {
-        throw new NotImplementedException();
+    	return this.numerator;
     }
 
     /**
@@ -31,7 +42,7 @@ public class Rational implements IRational {
      */
     @Override
     public int getDenominator() {
-        throw new NotImplementedException();
+		return this.denominator;
     }
 
     /**
@@ -47,7 +58,12 @@ public class Rational implements IRational {
      */
     @Override
     public Rational construct(int numerator, int denominator) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    	if(denominator == 0){
+        	throw new IllegalArgumentException();
+        }
+    	
+    	return new Rational(numerator, denominator);
+	
     }
 
     /**
@@ -58,7 +74,12 @@ public class Rational implements IRational {
      */
     @Override
     public boolean equals(Object obj) {
-        throw new NotImplementedException();
+    	//Finish code compare
+    	if(construct(numerator , denominator).equals(obj)){
+    		return true;
+    	}else
+    		return false;
+    	
     }
 
     /**
@@ -70,6 +91,15 @@ public class Rational implements IRational {
      */
     @Override
     public String toString() {
-        throw new NotImplementedException();
+    	//Finish code check if positive
+        if( (this.numerator/this.denominator) > 0){
+        	String pos = "numerator/denominator";
+        	return pos;
+        //Finish code check if negative
+        }else if( (this.numerator/this.denominator) < 0){
+        	String neg = "-numerator/denominator";
+        	return neg;
+        }else
+        	return null;
     }
 }
