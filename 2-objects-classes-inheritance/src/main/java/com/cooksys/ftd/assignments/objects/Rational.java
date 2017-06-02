@@ -66,21 +66,23 @@ public class Rational implements IRational {
 	
     }
 
-    /**
-     * @param obj the object to check this against for equality
-     * @return true if the given obj is a rational value and its
-     * numerator and denominator are equal to this rational value's numerator and denominator,
-     * false otherwise
-     */
-    @Override
-    public boolean equals(Object obj) {
-    	//Finish code compare
-    	if(construct(numerator , denominator).equals(obj)){
-    		return true;
-    	}else
-    		return false;
-    	
-    }
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rational other = (Rational) obj;
+		if (denominator != other.denominator)
+			return false;
+		if (numerator != other.numerator)
+			return false;
+		return true;
+	}
+    
 
     /**
      * If this is positive, the string should be of the form `numerator/denominator`
@@ -91,15 +93,16 @@ public class Rational implements IRational {
      */
     @Override
     public String toString() {
-    	//Finish code check if positive
-        if( (this.numerator/this.denominator) > 0){
-        	String pos = "numerator/denominator";
-        	return pos;
-        //Finish code check if negative
-        }else if( (this.numerator/this.denominator) < 0){
-        	String neg = "-numerator/denominator";
-        	return neg;
-        }else
-        	return null;
+    	Integer num = Math.abs(getNumerator());
+    	Integer den = Math.abs(getDenominator());
+    	String s = "";
+    	
+    	if( (numerator < 0 && denominator < 0) || (numerator > 0 && denominator > 0)){
+    		s += num + "/" + den;
+    	}else{
+    		s += "-" + num + "/" + den;
+    	}
+    	return s;
+    	
     }
 }

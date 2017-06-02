@@ -54,7 +54,8 @@ interface IRational {
     default IRational invert() throws IllegalStateException {
         if(getNumerator() == 0){
         	throw new IllegalStateException();
-        }
+        }else
+        	
     	return construct(getDenominator(), getNumerator());
         
     }
@@ -71,12 +72,11 @@ interface IRational {
      */
     default IRational add(IRational that) throws IllegalArgumentException {
     	
-    	if(that == null){
-        	throw new IllegalStateException();
-        }
+    	if(that != null){
 
     	return construct((this.getNumerator() * that.getDenominator()) + (that.getNumerator() * this.getDenominator()) , (this.getDenominator() * that.getDenominator()));
- 
+    	}else
+    		throw new IllegalArgumentException();
     }
 
     /**
@@ -90,8 +90,10 @@ interface IRational {
      * @throws IllegalArgumentException if that is null
      */
     default IRational sub(IRational that) throws IllegalArgumentException {
+    	if(that != null){
     	return construct(((this.getNumerator() * that.getDenominator()) - (that.getNumerator() * this.getDenominator())) , (this.getDenominator() * that.getDenominator()));
-    	
+    	}else
+    		throw new IllegalArgumentException();
     }
 
     /**
@@ -105,8 +107,10 @@ interface IRational {
      * @throws IllegalArgumentException if that is null
      */
     default IRational mul(IRational that) throws IllegalArgumentException {
+    	if(that != null){
        return construct((this.getNumerator()* that.getNumerator()) , (this.getDenominator() * that.getDenominator()));
-       
+    	}else
+    		throw new IllegalArgumentException();
     }
 
     /**
@@ -120,7 +124,9 @@ interface IRational {
      * @throws IllegalArgumentException if that is null or if the numerator of that is 0
      */
     default IRational div(IRational that) throws IllegalArgumentException {
+    	if((that != null) && (getNumerator() != 0)){
     	return construct((this.getNumerator() * that.getDenominator()) , (this.getDenominator() * that.getNumerator()));
-        
+    	}else
+    		throw new IllegalArgumentException();
     }
 }
