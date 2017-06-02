@@ -1,5 +1,7 @@
 package com.cooksys.ftd.assignments.control;
 
+import java.util.Arrays;
+
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -24,7 +26,26 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-    	 throw new NotImplementedException();
+    	 if( i < 0){
+    		 throw new IllegalArgumentException();
+    	 }
+    	 int x = 0;
+         int y = 1;
+         int z;
+         int[] newArray = new int[i];
+         
+         for(int n = 0; n < newArray.length; n++){
+         	
+         		z = x + y;
+         		x = y;
+         		y = z;
+         		
+         		newArray[n] = x;
+         		
+         	}
+         	return newArray[i];
+         
+    	 
     	
     }
 
@@ -39,7 +60,26 @@ public class Fibonacci {
      *                                  given end is less than the given start
      */
     public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    	
+    	if( start < 0 || end < 0 || end < start){
+        	throw new IllegalArgumentException();
+        }
+        int x = 0;
+        int y = 1;
+        int z;
+        int[] newArray = new int[end];
+        
+        for(int i = 0; i < end; i++){
+        	
+        		z = x + y;
+        		x = y;
+        		y = z;
+        		
+        		newArray[i] = x;
+        		
+        	}
+        	return Arrays.copyOfRange(newArray, start, end);
+        
     }
 
     /**
@@ -50,25 +90,25 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
-    	int x = 1;
-        int y = 1;
-        int z;
-        
-        int[] newArray = new int[count];
-        
+    	
         if( count < 0){
         	throw new IllegalArgumentException();
-        }else{
-        	for(int i = 0; i < count; i++){
+        }
+        int x = 0;
+        int y = 1;
+        int z;
+        int[] newArray = new int[count];
+        
+        for(int i = 0; i < count; i++){
         				
-        		z = y;
-        		y = x + y;
-        		x = z;
+        		z = x + y;
+        		x = y;
+        		y = z;
         		
-        		newArray[i] = 0;
+        		newArray[i] = x;
         		
         	}
         	return newArray;
-        }
+        
     }
 }
