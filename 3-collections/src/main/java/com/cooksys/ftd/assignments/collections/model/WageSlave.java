@@ -4,20 +4,52 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class WageSlave implements Capitalist {
 
+	String wname;
+	int wsalary;
+	FatCat wowner;
+	
     public WageSlave(String name, int salary) {
-        throw new NotImplementedException();
+        this.wname = name;
+        this.wsalary = salary;
     }
 
     public WageSlave(String name, int salary, FatCat owner) {
-        throw new NotImplementedException();
+        this.wname= name;
+        this.wsalary = salary;
+        this.wowner = owner;
     }
 
-    /**
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WageSlave other = (WageSlave) obj;
+		if (wname == null) {
+			if (other.wname != null)
+				return false;
+		} else if (!wname.equals(other.wname))
+			return false;
+		if (wowner == null) {
+			if (other.wowner != null)
+				return false;
+		} else if (!wowner.equals(other.wowner))
+			return false;
+		if (wsalary != other.wsalary)
+			return false;
+		return true;
+	}
+
+	/**
      * @return the name of the capitalist
      */
     @Override
     public String getName() {
-        throw new NotImplementedException();
+        return wname;
     }
 
     /**
@@ -25,7 +57,7 @@ public class WageSlave implements Capitalist {
      */
     @Override
     public int getSalary() {
-        throw new NotImplementedException();
+        return wsalary;
     }
 
     /**
@@ -33,7 +65,11 @@ public class WageSlave implements Capitalist {
      */
     @Override
     public boolean hasParent() {
-        throw new NotImplementedException();
+        if(wowner instanceof Capitalist){
+        	return true;
+        }else{
+        	return false;
+        }
     }
 
     /**
@@ -41,6 +77,10 @@ public class WageSlave implements Capitalist {
      */
     @Override
     public FatCat getParent() {
-        throw new NotImplementedException();
+        if(wowner instanceof Capitalist){
+        	return wowner;
+        }else{
+        	return null;
+        }
     }
 }

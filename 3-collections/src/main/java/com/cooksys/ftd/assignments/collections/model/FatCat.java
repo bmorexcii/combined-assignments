@@ -4,20 +4,54 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class FatCat implements Capitalist {
 
+
+	private String fname;
+	private int fsalary;
+	private FatCat fowner;
+	
+	
     public FatCat(String name, int salary) {
-        throw new NotImplementedException();
+        this.fname = name;
+        this.fsalary = salary;
     }
 
     public FatCat(String name, int salary, FatCat owner) {
-        throw new NotImplementedException();
+        this.fname = name;
+        this.fsalary = salary;
+        this.fowner = owner;
     }
 
-    /**
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FatCat other = (FatCat) obj;
+		if (fname == null) {
+			if (other.fname != null)
+				return false;
+		} else if (!fname.equals(other.fname))
+			return false;
+		if (fowner == null) {
+			if (other.fowner != null)
+				return false;
+		} else if (!fowner.equals(other.fowner))
+			return false;
+		if (fsalary != other.fsalary)
+			return false;
+		return true;
+	}
+
+	/**
      * @return the name of the capitalist
      */
     @Override
     public String getName() {
-        throw new NotImplementedException();
+        return fname;
     }
 
     /**
@@ -25,7 +59,7 @@ public class FatCat implements Capitalist {
      */
     @Override
     public int getSalary() {
-        throw new NotImplementedException();
+        return fsalary;
     }
 
     /**
@@ -33,7 +67,11 @@ public class FatCat implements Capitalist {
      */
     @Override
     public boolean hasParent() {
-        throw new NotImplementedException();
+        if(fowner instanceof Capitalist){
+        	return true;
+        }else{
+        	return false;
+        }
     }
 
     /**
@@ -41,6 +79,10 @@ public class FatCat implements Capitalist {
      */
     @Override
     public FatCat getParent() {
-        throw new NotImplementedException();
+        if(fowner instanceof Capitalist){
+        	return fowner ;
+        }else{
+        	return null;
+        }
     }
 }
