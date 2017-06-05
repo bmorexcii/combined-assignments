@@ -26,24 +26,15 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-    	 if( i < 0){
-    		 throw new IllegalArgumentException();
-    	 }
-    	 int x = 0;
-         int y = 1;
-         int z;
-         int[] newArray = new int[i];
-         
-         for(int n = 0; n < newArray.length; n++){
-         	
-         		z = x + y;
-         		x = y;
-         		y = z;
-         		
-         		newArray[n] = x;
-         		
-         	}
-         	return newArray[i];
+    	if (i < 0){
+    		throw new IllegalArgumentException();
+    	}
+
+    	int[] fib = new int[i+1];
+
+    	fib = fibonacci(i+1);
+
+    	return fib[i];
          
     	 
     	

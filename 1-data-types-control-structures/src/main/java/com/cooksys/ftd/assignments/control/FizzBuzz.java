@@ -74,20 +74,29 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-    	String[] messages = new String[end - start];
-    	int nullCount = 0;
     	
-    	if(end < start){
-    		throw new IllegalArgumentException();
-    	}else{
-    		for(int i = start; i < end; i++){
-    			if(message(i) == null){
-       				nullCount++;
-       				}
-    	}
-   			
-   			}
-		return messages;
+    	if (end < start){
+        	throw new IllegalArgumentException();
+        }
+
+    	int count = 0;
+    	int comp = 0;
+        for (int i = 0; i < end; i++){
+        	if (i % 3 != 0 && i % 5 != 0){
+        		count++;
+        	}
+        } 
+
+        String[] returncomp = new String[end -start - count];
+        for (int c = 0 ; c < end; c++){
+        	if (message(c) == null){
+        		continue;
+        	}else{   
+        	returncomp[comp] = message(c);
+        	comp++;
+        	}
+        }
+        return returncomp;
    		}
 
     /**
@@ -96,9 +105,9 @@ public class FizzBuzz {
      */
     public static void main(String[] args) {
         for(int i = 0; i<115; i++){
+        	if(message(i)!= null)
         	System.out.println(message(i));
         }
-    	throw new NotImplementedException();
     }
 
 }
