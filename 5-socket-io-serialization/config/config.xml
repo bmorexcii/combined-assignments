@@ -1,1 +1,5 @@
-<config/>
+<config>
+	<local></local>
+	<remote></remote>
+	<student-file-path>C:\Users\ftd-0\code\combined-assignments\5-socket-io-serialization\config\student.xml</student-file-path>
+</config>

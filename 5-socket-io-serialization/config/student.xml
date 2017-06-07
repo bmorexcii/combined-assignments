@@ -1,1 +1,6 @@
-<student/>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student firstname = "Jamie" lastname = "Ellis">
+	<favorite-ide>Oracle Database</favorite-ide>
+	<favorite-language>PL/SQL</favorite-language>
+	<favorite-paradigm>Declarative</favorite-paradigm>
+</student>
